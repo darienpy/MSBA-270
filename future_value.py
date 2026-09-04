@@ -37,4 +37,5 @@ while choice.lower() == "y":
     choice = input("Continue? (y/n): ")
     print()
 
-print("Bye!")
+print("Thank you for using Future Value Calculator!")
+
