@@ -32,15 +32,27 @@ class Character:
 
     def take_damage(self, amount):
         # TODO 2: Reduce self.hp by `amount`. Don't let it go below 0.
-        self.hp -= amount
-        if self.hp < 0:
-            self.hp = 0
+        # Check: Reject negative damage because subtracting a negative
+        # number would increase health instead of reducing it.
+        if amount < 0:
+            print("Damage cannot be negative.")
+            return
 
-        # Journal Entry TODO 2: Used -= to subtract the damage amount
-        # from the character's current health.
-        # Checked whether the remaining health was below 0.
-        # If it was negative, set self.hp to 0.
-        # Only current health changes; self.max_hp stays the same.
+        # Check discussed in class: Calculate the remaining health first.
+        # Use self.hp to access this character's current health.
+        # If the result is negative, store 0; otherwise, store the result.
+        new_hp = self.hp - amount
+
+        if new_hp < 0:
+            self.hp = 0
+        else:
+            self.hp = new_hp
+
+        # Journal Entry TODO 2: Used a temporary variable named new_hp
+        # to check the result before updating the character's health.
+        # Corrected hp and self_hp from my notes to self.hp.
+        # This updates the object's attribute and keeps health at or above 0.
+        # self.max_hp stays unchanged.
 
     def level_up(self):
         # TODO 3: Increase self.level by 1 and restore self.hp to self.max_hp.
@@ -98,6 +110,12 @@ def load_character(filename):
         return Character(name, hp, level)
     except FileNotFoundError:
         return None
+    except ValueError:
+        print("The save file contains missing or invalid numeric data.")
+        return None
+    except OSError:
+        print("The save file could not be read.")
+        return None
 
     # Journal Entry TODO 6: Opened the save file in reading mode.
     # Used readline() to read name, hp, and level in their saved order.
@@ -106,6 +124,11 @@ def load_character(filename):
     # Returned a new Character object using the loaded values.
     # Used except FileNotFoundError to return None if no save file exists,
     # allowing main() to create a new character.
+
+    # Additional checks: Kept FileNotFoundError for a missing save file.
+    # Added ValueError for missing or noninteger HP and level values.
+    # Added OSError for other file-reading problems, such as denied access.
+    # Returning None allows main() to create a new character.
 
 def main():
     print("=== RPG Character Forge ===\n")
