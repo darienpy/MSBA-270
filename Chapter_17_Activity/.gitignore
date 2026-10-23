@@ -1,6 +1,0 @@
-.env
-facilitator_notes.md
-.venv/
-__pycache__/
-*.pyc
-.DS_Store
