@@ -1,0 +1,7 @@
+roster.db
+roster.db-*
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+venv/
