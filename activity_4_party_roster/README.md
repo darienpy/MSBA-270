@@ -142,4 +142,4 @@ If `roster.db` was already tracked, `.gitignore` alone will not stop tracking it
 
 The project is based on the course-provided Activity 4 Party Roster Manager starter files and student guide. The GUI database functions reuse the Week 8 database implementation. Character names and attributes are fictional test data; no external dataset is required.
 
-ChatGPT provided meaningful assistance with TODO explanations, menu and callback code, input validation, Treeview refreshing, and troubleshooting path quoting and an unmatched parenthesis. It also helped draft documentation. The implementation was checked through the manual terminal and GUI tests recorded above. No mastery of unfinished features, such as bulk deletion, is claimed.
+ChatGPT provided some assistance with TODO explanations, menu and callback code, input validation, Treeview refreshing, and troubleshooting path quoting and an unmatched parenthesis.
